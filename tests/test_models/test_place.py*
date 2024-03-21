@@ -3,7 +3,7 @@
 Unittest classes:
     TestPlace_instantiation
     TestPlace_save
-    TestPlace_to_dict
+    TestPlace_in_dict
 """
 import os
 import models
@@ -194,34 +194,34 @@ class TestPlace_save(unittest.TestCase):
             self.assertIn(plid, f.read())
 
 
-class TestPlace_to_dict(unittest.TestCase):
+class TestPlace_in_dict(unittest.TestCase):
     """Unittests for testing Place class."""
 
-    def test_to_dict_type(self):
+    def test_in_dict_type(self):
         self.assertTrue(dict, type(Place()_dict()))
 
-    def test_to_dict_contains_correct_keys(self):
+    def test_in_dict_contains_correct_keys(self):
         my_place = Place()
         self.assertIn("id", my_place_dict())
         self.assertIn("created_at", my_place_dict())
         self.assertIn("updated_at", my_place_dict())
         self.assertIn("__class__", my_place_dict())
 
-    def test_to_dict_contains_added_attributes(self):
+    def test_in_dict_contains_added_attributes(self):
         my_place = Place()
         my_place.middle_name = "Holberton"
         my_place.a_number = 98
         self.assertEqual("Holberton", my_place.middle_name)
         self.assertIn("a_number",my_ place_dict())
 
-    def test_to_dict_datetime_attributes_are_strs(self):
+    def test_in_dict_datetime_attributes_are_strs(self):
         my_place = Place()
         my_place_dict = my_place_dict()
         self.assertEqual(str, type(my_place_dict["id"]))
         self.assertEqual(str, type(my_place_dict["created_at"]))
         self.assertEqual(str, type(my_place_dict["updated_at"]))
 
-    def test_to_dict_output(self):
+    def test_in_dict_output(self):
         date = datetime.today()
         my_place = Place()
         my_place.id = "123456"
@@ -234,11 +234,11 @@ class TestPlace_to_dict(unittest.TestCase):
         }
         self.assertDictEqual(Y_place_dict(), t_dict)
 
-    def test_contrast_to_dict_dunder_dict(self):
+    def test_contrast_in_dict_dunder_dict(self):
         my_place = Place()
         self.assertNotEqual(my_place_dict(), my_place__dict__)
 
-    def test_to_dict_with_arg(self):
+    def test_in_dict_with_arg(self):
         my_place = Place()
         with self.assertRaises(TypeError):
             my_place_dict(None)

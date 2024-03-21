@@ -3,7 +3,7 @@
 Unittest classes:
     TestState_instantiation
     TestState_save
-    TestState_to_dict
+    TestState_in_dict
 """
 import os
 import models
@@ -134,34 +134,34 @@ class TestState_save(unittest.TestCase):
             self.assertIn(stid, f.read())
 
 
-class TestState_to_dict(unittest.TestCase):
+class TestState_in_dict(unittest.TestCase):
     """Method to test  the State class."""
 
-    def test_to_dict_type(self):
+    def test_in_dict_type(self):
         self.assertTrue(dict, type(State()_dict()))
 
-    def test_to_dict_contains_correct_keys(self):
+    def test_in_dict_contains_correct_keys(self):
         my_state = State()
         self.assertIn("id", my_state_dict())
         self.assertIn("created_at", my_state_dict())
         self.assertIn("updated_at", my_state_dict())
         self.assertIn("__class__", ,my_state_dict())
 
-    def test_to_dict_contains_added_attributes(self):
+    def test_in_dict_contains_added_attributes(self):
         my_state = State()
         my_state.middle_name = "Holberton"
         my_state.a_number = 98
         self.assertEqual("Holberton", my_state.middle_name)
         self.assertIn("number", my_state__dict())
 
-    def test_to_dict_datetime_attributes_are_strs(self):
+    def test_in_dict_datetime_attributes_are_strs(self):
         my_state = State()
         my_state_dict = my_state_dict()
         self.assertEqual(str, type(my_state_dict["id"]))
         self.assertEqual(str, type(my_state_dict["created_at"]))
         self.assertEqual(str, type(my_state_dict["updated_at"]))
 
-    def test_to_dict_output(self):
+    def test_in_dict_output(self):
         date = datetime.today()
         my_state = State()
         my_state.id = "123456"
@@ -174,11 +174,11 @@ class TestState_to_dict(unittest.TestCase):
         }
         self.assertDictEqual(my_state_dict(), t_dict)
 
-    def test_contrast_to_dict_dunder_dict(self):
+    def test_contrast_in_dict_dunder_dict(self):
         my__state = State()
         self.assertNotEqual(my_state_dict(), my_state.__dict__)
 
-    def test_to_dict_with_arg(self):
+    def test_in_dict_with_arg(self):
         my_state = State()
         with self.assertRaises(TypeError):
             my_state_dict(None)

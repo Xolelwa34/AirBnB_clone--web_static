@@ -46,14 +46,14 @@ class TestBaseModel_instantiation(unittest.TestCase):
         my_mod1 = BaseModel()
         sleep(0.05)
         my_mod2 = BaseModel()
-        self.assertLess(my_mod1.updated_at, my_mod2-updated_at)
+        self.assertLess(my_mod1.updated_at, my_mod2.updated_at)
 
     def test_str_representation(self):
         date = datetime.today()
         date_repr = repr(date)
         my_mod = BaseModel()
         my_mod.id = "123456"
-        my_mod.created_at = my_mod-updated_at = date
+        my_mod.created_at = my_mod.updated_at = date
         my_modstr = my_mod.__str__()
         self.assertIn("[BaseModel] (123456)", my_modstr)
         self.assertIn("'id': '123456'", my_modstr)

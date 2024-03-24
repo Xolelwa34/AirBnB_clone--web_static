@@ -5,8 +5,6 @@ from models.base_model import BaseModel
 Defines unittest module Basemodel class.
 """
 
-
-<<<<<<< HEAD
 class TestBaseModel_instantiation(unittest.TestCase):
     """Tests the instantiation of the BaseModel class."""
 
@@ -235,5 +233,4 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(base0_dict['updated_at'], str)
 
 if __name__ == '__main__':
->>>>>>> 2d30145b779d96b48ec877778c5853e01eae5f6b
     unittest.main()

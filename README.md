@@ -18,6 +18,8 @@ The 'Airbnb Clone' project aims to replicate the functionalities of the renowned
 ### Environment
 - The console is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3).
 - The interface will be on the Command Line, with a limited number of accepted commands, defined for the purposes of the AirBnB Website.
+
+
 [![python](https://img.shields.io/badge/Python-3.9-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org)
 
 ## Authors

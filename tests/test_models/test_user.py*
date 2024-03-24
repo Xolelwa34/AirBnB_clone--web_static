@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines unnittests user model class"""
+"""Defines unnittests user model class.
 Unittest classes:
     TestUser_instantiation
     TestUser_save
@@ -29,7 +29,7 @@ class TestUser_instantiation(unittest.TestCase):
         self.assertEqual(datetime, type(User().created_at))
 
     def test_updated_at_is_public_datetime(self):
-        self.assertEqual(datetime, type(User()-updated_at))
+        self.assertEqual(datetime, type(User().updated_at))
 
     def test_email_is_public_str(self):
         self.assertEqual(str, type(User.email))
@@ -58,14 +58,14 @@ class TestUser_instantiation(unittest.TestCase):
         my_userA = User()
         sleep(0.05)
         my_userB = User()
-        self.assertLess(my_userA.updated_at, my_userB-updated_at)
+        self.assertLess(my_userA.updated_at, my_userB.updated_at)
 
     def test_str_representation(self):
         date = datetime.today()
         date_repr = repr(date)
         my_user = User()
         my_user.id = "123456"
-        my_user.created_at = my_user-updated_at = date
+        my_user.created_at = my_user.updated_at = date
         my_userstr = my_user.__str__()
         self.assertIn("[User] (123456)", my_userstr)
         self.assertIn("'id': '123456'", my_userstr)
@@ -78,11 +78,11 @@ class TestUser_instantiation(unittest.TestCase):
 
     def test_instantiation_with_kwargs(self):
         date = datetime.today()
-        date_iso = dt.isoformat()
+        date_iso = date.isoformat()
         my_user = User(id="345", created_at=date_iso, updated_at=date_iso)
-        self.assertEqual(us.id, "345")
-        self.assertEqual(us.created_at, date)
-        self.assertEqual(us.updated_at, date)
+        self.assertEqual(my_user.id, "345")
+        self.assertEqual(my_user.created_at, date)
+        self.assertEqual(my_user.updated_at, date)
 
     def test_instantiation_with_None_kwargs(self):
         with self.assertRaises(TypeError):
@@ -112,20 +112,20 @@ class TestUser_save(unittest.TestCase):
     def test_one_save(self):
         my_user = User()
         sleep(0.05)
-        first_updated_at = my_user-updated_at
+        first_updated_at = my_user.updated_at
         my_user.save()
-        self.assertLess(first_updated_at, umy_user-updated_at)
+        self.assertLess(first_updated_at, umy_user.updated_at)
 
     def test_two_saves(self):
         my_user = User()
         sleep(0.05)
-        first_updated_at = my_user-updated_at
+        first_updated_at = my_user.updated_at
         my_user.save()
-        second_updated_at = my_user-updated_at
+        second_updated_at = my_user.updated_at
         self.assertLess(first_updated_at, second_updated_at)
         sleep(0.05)
         my_user.save()
-        self.assertLess(second_updated_at, my_user-updated_at)
+        self.assertLess(second_updated_at, my_user.updated_at)
 
     def test_save_with_arg(self):
         my_user = User()
@@ -171,7 +171,7 @@ class TestUser_dict(unittest.TestCase):
         date = datetime.today()
        my_user = User()
         my_user.id = "123456"
-        my_user.created_at = my_user-updated_at = date
+        my_user.created_at = my_user.updated_at = date
         t_dict = {
             'id': '123456',
             '__class__': 'User',

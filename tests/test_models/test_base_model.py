@@ -3,7 +3,7 @@
 Unittest classes:
     TestBaseModel_instantiation
     TestBaseModel_save
-    TestBaseModel_in_dict
+    TestBaseModel_dict
 """
 import os
 import models
@@ -32,28 +32,28 @@ class TestBaseModel_instantiation(unittest.TestCase):
         self.assertEqual(datetime, type(BaseModel().updated_at))
 
     def test_two_models_unique_ids(self):
-        my_mod1 = BaseModel()
-        my_mod2 = BaseModel()
-        self.assertNotEqual(my_mod1.id,my_mod2.id)
+        my_modA = BaseModel()
+        my_modB = BaseModel()
+        self.assertNotEqual(my_modA.id,my_modB.id)
 
     def test_two_models_different_created_at(self):
-        my_mod1 = BaseModel()
+        my_modA = BaseModel()
         sleep(0.05)
-        my_mod2 = BaseModel()
-        self.assertLess(my_mod1.created_at, my_mod2.created_at)
+        my_modB = BaseModel()
+        self.assertLess(my_modA.created_at, my_modB.created_at)
 
     def test_two_models_different_updated_at(self):
-        my_mod1 = BaseModel()
+        my_modA = BaseModel()
         sleep(0.05)
-        my_mod2 = BaseModel()
-        self.assertLess(my_mod1.updated_at, my_mod2-updated_at)
+        my_modB = BaseModel()
+        self.assertLess(my_modA.updated_at, my_modB.updated_at)
 
     def test_str_representation(self):
         date = datetime.today()
         date_repr = repr(date)
         my_mod = BaseModel()
         my_mod.id = "123456"
-        my_mod.created_at = my_mod-updated_at = date
+        my_mod.created_at = my_mod.updated_at = date
         my_modstr = my_mod.__str__()
         self.assertIn("[BaseModel] (123456)", my_modstr)
         self.assertIn("'id': '123456'", my_modstr)
@@ -109,20 +109,20 @@ class TestBaseModel_save(unittest.TestCase):
     def test_one_save(self):
         bmod = BaseModel()
         sleep(0.05)
-        first_updated_at = my_mod-updated_at
+        first_updated_at = my_mod.updated_at
         my_mod_save()
-        self.assertLess(first_updated_at, my_mod-updated_at)
+        self.assertLess(first_updated_at, my_mod.updated_at)
 
     def test_two_saves(self):
         my_mod = BaseModel()
         sleep(0.05)
-        first_updated_at = my_mod-updated_at
+        first_updated_at = my_mod.updated_at
         my_mod.save()
-        second_updated_at = my_mod-updated_at
+        second_updated_at = my_mod.updated_at
         self.assertLess(first_updated_at, second_updated_at)
         sleep(0.05)
         my_mod_save()
-        self.assertLess(second_updated_at, my_mod-updated_at)
+        self.assertLess(second_updated_at, my_mod.pdated_at)
 
     def test_save_with_arg(self):
         my_mod = BaseModel()
@@ -137,34 +137,34 @@ class TestBaseModel_save(unittest.TestCase):
             self.assertIn(my_mod, f.read())
 
 
-class TestBaseModel_in_dict(unittest.TestCase):
+class TestBaseModel_dict(unittest.TestCase):
     """Method for testing BaseModel class."""
 
-    def test_in_dict_type(self):
+    def test_dict_type(self):
         my_mod = BaseModel()
         self.assertTrue(dict, type(my_mod_dict()))
 
-    def test_in_dict_contains_correct_keys(self):
+    def test_dict_contains_correct_keys(self):
         my_mod = BaseModel()
         self.assertIn("id", my_mod_dict())
         self.assertIn("created_at", my_mod_dict())
         self.assertIn("updated_at", my_mod_dict())
         self.assertIn("__class__", my_mod_dict())
 
-    def test_in_dict_contains_added_attributes(self):
+    def test_dict_contains_added_attributes(self):
         my_mod = BaseModel()
         my_mod_name = "Holberton"
         my_mod_number = 98
         self.assertIn("name", my_mod_dict())
-        self.assertIn("my_number", my_mod__in__dict())
+        self.assertIn("my_number", my_mod_dict())
 
-    def test_in_dict_datetime_attributes_are_strs(self):
+    def test_dict_datetime_attributes_are_strs(self):
         my_mod = BaseModel()
         my_mod_dict = my_mod_dict()
         self.assertEqual(str, type(my_mod_dict["created_at"]))
         self.assertEqual(str, type(my_mod_dict["updated_at"]))
 
-    def test_in_dict_output(self):
+    def test_dict_output(self):
         date = datetime.today()
         my_mod = BaseModel()
         my_mod.id = "123456"
@@ -177,11 +177,11 @@ class TestBaseModel_in_dict(unittest.TestCase):
         }
         self.assertDictEqual(bmod_dict(), t_dict)
 
-    def test_contrast_to_dict_dunder_dict(self):
+    def test_contrast_dict_dunder_dict(self):
         my_mod = BaseModel()
         self.assertNotEqual(my_mod_dict(), my_mod__dict__)
 
-    def test_in_dict_with_arg(self):
+    def test_dict_with_arg(self):
         my_mod = BaseModel()
         with self.assertRaises(TypeError):
             my_mod_dict(None)

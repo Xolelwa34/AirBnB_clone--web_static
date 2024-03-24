@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines HBnB console."""
+"""Script that defines HBnB console."""
 import cmd
 import re
 from shlex import split
@@ -14,6 +14,7 @@ from models.review import Review
 
 
 def parse(arg):
+    """Function to parse the args entered into the console."""
     obj_inst = re.search(r"\{(.*?)\}", arg)
     bracket = re.search(r"\[(.*?)\]", arg)
     if obj_inst is None:
@@ -32,9 +33,10 @@ def parse(arg):
 
 
 class HBNBCommand(cmd.Cmd):
-    """Defines the HolbertonBnB command interpreter.
+    """Defines the HBnB(AirBnB Clone) command interpreter.
+    
     Attributes:
-        prompt (str): Command prompt.
+        prompt: (str) command prompt.
     """
 
     prompt = "(hbnb) "
@@ -49,11 +51,12 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def emptyline(self):
-        """None."""
+        """Function does nothing if it recieves
+        and empty line."""
         pass
 
     def default(self, arg):
-        """Default behavior for cmd module when the input is invalid"""
+        """Default behaviour for the cmd module if the input is invalid"""
         argdict = {
             "all": self.do_all,
             "show": self.do_show,
@@ -74,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_quit(self, arg):
-        """Quit command to exit program."""
+        """Command used to exit the console"""
         return True
 
     def do_EOF(self, arg):

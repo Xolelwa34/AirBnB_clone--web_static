@@ -10,7 +10,8 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Initializethe instsnce Basemodel
-        Args:
+        Attributes:
+
             *args (any): Unused.
             **kwargs (dict): Key/value pairs of attributes.
         """

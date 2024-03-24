@@ -4,9 +4,11 @@ from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """Method to represent amenity.
-    Attributes:
-        name (str): Subclass that inherits from the amenity.
+    """Class method to represent amenity.
+
+    Attribute:
+
+        name: (str) Subclass that inherits from the amenity.
     """
 
     name = ""

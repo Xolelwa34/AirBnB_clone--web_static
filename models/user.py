@@ -4,12 +4,13 @@ from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """Method that represents User.
+    """Class method that represents the User.
+
     Attributes:
-        email (str): User email.
-        password (str): User password
-        first_name (str): User first name
-        last_name (str): User last name
+        email: (str) User email.
+        password: (str) User password
+        first_name: (str) User first name
+        last_name: (str) User last name
     """
 
     email = ""

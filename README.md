@@ -22,5 +22,5 @@ The 'Airbnb Clone' project aims to replicate the functionalities of the renowned
 
 ## Authors
 
-- Xolelwa Swekile | Email: ciliaswekile@gmail.com | Github: [`To be inserted`]
+- Xolelwa Swekile | Email: ciliaswekile@gmail.com | Github: [`Xolelwa Swekile`](https://github.com/Xolelwa34)
 - Thato Mashigo | Email: thatotae325@gmail.com | Github: [`Thato Mashigo`](https://github.com/Polarthebear)

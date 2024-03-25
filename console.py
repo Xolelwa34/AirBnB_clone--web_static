@@ -34,7 +34,7 @@ def parse(arg):
 
 class HBNBCommand(cmd.Cmd):
     """Defines the HBnB(AirBnB Clone) command interpreter.
-    
+
     Attributes:
         prompt: (str) command prompt.
     """
@@ -87,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """Method used to create a new class instance and print its id."""
-    
+
         argl = parse(arg)
         if len(argl) == 0:
             print("** class name missing **")
@@ -98,7 +98,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_show(self, arg):
-        """Method to display the string representation of a class instance of a given id."""
+        """Method to display the string representation
+        of a class instance of a given id."""
         argl = parse(arg)
         objctdict = storage.all()
         if len(argl) == 0:
@@ -129,7 +130,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """Method to Display string representations of all instances of a given class."""
+        """Method to Display string representations
+        of all instances of a given class."""
         argl = parse(arg)
         if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
@@ -189,7 +191,8 @@ class HBNBCommand(cmd.Cmd):
             obj = objctdict["{}.{}".format(argl[0], argl[1])]
             for k, v in eval(argl[2]).items():
                 if (k in objct.__class__.__dict__.keys() and
-                        type(objct.__class__.__dict__[k]) in {str, int, float}):
+                        type(objct.__class__.__dict__[k])
+                        in {str, int, float}):
                     val = type(objct.__class__.__dict__[k])
                     objct.__dict__[k] = val(v)
                 else:
